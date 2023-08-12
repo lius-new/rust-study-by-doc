@@ -3,9 +3,16 @@
 // 未包含在预导入的内容需要自己手动导入
 // TODO: (chapter-1) 1. 那么我该将自己的内容放入预导入的内容中呢?
 use std::io;
+// Rng是一个trait,定义了生成随机数生成器实现的方法. 要使用trait那么就将其包含在作用域中
+use rand::Rng;
 
 fn main() {
     println!("请输入你猜测的数字: ");
+
+    // rand::thread_rng() 函数提供实际使用随机数生成q器,位于当前执行线程的本地环境中,并从操作系统中获取seed. 接着调用gen_range方法
+    // 1..=100: 范围表达式, start..=end
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
 
     // 1. 默认变量不可变,但是可以通过mut关键字来声明可变变化
     // 2. String,字符串类型,可增长的文本块
