@@ -35,7 +35,11 @@ fn main() {
         // parse() 返回的还是一个result类型,包含了OK和Err,并且通过expect来使结果为Err的时候,终止程序并显示指定的错误内容
 
         println!("你输入了: {}", guess); // 好像parse属于str的方法,而并非i32
-        let guess: i32 = guess.trim().parse().expect("请输入数字");
+        // let guess: i32 = guess.trim().parse().expect("请输入数字");
+        let guess: i32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue
+        };
 
 
         // cmp 用于在任意可比较的变量上调用
