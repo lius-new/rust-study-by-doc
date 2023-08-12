@@ -5,6 +5,8 @@
 use std::io;
 // Rng是一个trait,定义了生成随机数生成器实现的方法. 要使用trait那么就将其包含在作用域中
 use rand::Rng;
+// Ordering的三个实例可以用来比较两个值的出现的三种结果
+use std::cmp::Ordering;
 
 fn main() {
     println!("请输入你猜测的数字: ");
@@ -24,6 +26,16 @@ fn main() {
     // read_line() 从标准输入句获取输入并追加到guess ,& 表示引用,其允许程序中多处访问同一个变量而无需在内存中拷贝变量
     // read_line() 返回result类型. 这是一个枚举类型,它包含两个实例(Ok,Err).  result实例拥有.expect方法.  当实例为Err的时候expect才会生效,此时程序会崩溃并在标准输出终端打印内容
     io::stdin().read_line(&mut guess).expect("输入的内容错误");
+
+
+    // cmp 用于在任意可比较的变量上调用
+    // match 表示分支
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small"),
+        Ordering::Equal => println!("win!"),
+        Ordering::Greater => println!("Too big")
+    }
+
 
     println!("你输入了: {}", guess);
 }
