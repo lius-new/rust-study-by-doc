@@ -15,7 +15,6 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
 
-
     loop {
         // 1. 默认变量不可变,但是可以通过mut关键字来声明可变变化
         // 2. String,字符串类型,可增长的文本块
@@ -43,8 +42,11 @@ fn main() {
         // match 表示分支
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small"),
-            Ordering::Equal => println!("win!"),
-            Ordering::Greater => println!("Too big")
+            Ordering::Greater => println!("Too big"),
+            Ordering::Equal => {
+                println!("win!");
+                break;
+            }
         }
     }
 }
