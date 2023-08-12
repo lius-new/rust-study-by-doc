@@ -15,13 +15,14 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
 
-    // 1. 默认变量不可变,但是可以通过mut关键字来声明可变变化
-    // 2. String,字符串类型,可增长的文本块
-    // 3. new 属于关联函数(静态方法)
-    // 4. 总之,下面创建了一个可变的字符串变量
-    let mut guess = String::new();
 
     loop {
+        // 1. 默认变量不可变,但是可以通过mut关键字来声明可变变化
+        // 2. String,字符串类型,可增长的文本块
+        // 3. new 属于关联函数(静态方法)
+        // 4. 总之,下面创建了一个可变的字符串变量
+        let mut guess = String::new();
+
         println!("请输入你猜测的数字: ");
 
         // io::stdio() 代表终端标准输入句柄的类型
@@ -33,9 +34,10 @@ fn main() {
         // 将输入中读取的String转换为数字类型
         // 在rust中通过创建一个新得变量来**隐藏**之前的值(这也是类型转换的常用手法)
         // parse() 返回的还是一个result类型,包含了OK和Err,并且通过expect来使结果为Err的时候,终止程序并显示指定的错误内容
+
+        println!("你输入了: {}", guess); // 好像parse属于str的方法,而并非i32
         let guess: i32 = guess.trim().parse().expect("请输入数字");
 
-        println!("你输入了: {}", guess);
 
         // cmp 用于在任意可比较的变量上调用
         // match 表示分支
