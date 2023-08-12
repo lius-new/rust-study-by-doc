@@ -3,8 +3,4 @@ name = "rust-32"
 version = "0.1.0"
 edition = "2021"
 
-# 可以在dependencies后添加我们需要的crate
-# crate 表示rust代码包(项目). 一般项目可以分为二进制(bin)crate和库crate
-# rand 中就是一个库crate,库crate可以提供能够被任意其他程序使用的代码,但不可执行
 [dependencies]
-rand = "0.8.5" # 0.8.5实际上是^0.8.5的简写. 它表示任何至少是 0.8.5 但小于 0.9.0 的版本
