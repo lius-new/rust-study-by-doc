@@ -1,22 +1,16 @@
 fn main() {
-    let mut i = 0;
-    let r = loop {
-        println!("2");
-        i + 1;
-        if i == 10 { break i; }
-    };
+    // while 循环表达式
+    let mut t = 5;
+    while t > 1 {
+        println!("{}", t);
+        t -= 1;
+    }
 
-    // 多个loop循环
-    // 可以通过`'loop_token: `来指定循环的标识循环,以供在嵌套循环中区分循环
-    let mut counter = 0;
-    let t = 'other: loop {
+    let mut counter = 1;
+
+    // while 表达式返回的总是(),单元值(单元元组), 因为其没有返回值, 在表达式为false就退出了
+    let result = while counter < 20 {
         counter += 1;
-        println!("other");
-        'inner: loop {
-            println!("inner");
-            if counter == 5 {
-                break 'other 2;
-            }
-        }
+        counter
     };
 }
