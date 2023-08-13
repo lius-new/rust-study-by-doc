@@ -23,4 +23,12 @@ fn main() {
 
     // TODO: RangeInclusive<i32> 类型 ,这是一种什么类型?
     let item = (1..=3);
+
+    // 好像for循环也获取返回的值,其类型也是()
+    let mut counter = 0;
+    let t = for i in 1..4 {
+        counter += i;
+        counter
+    };
+    println!("{:#?}", t)
 }
