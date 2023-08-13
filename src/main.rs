@@ -1,24 +1,22 @@
 fn main() {
-    let number = 3;
-
-    // 注意, if 判断的值的结果必须是bool类型.
-    if number > 4 {
-        println!("win")
-    } else {
-        println!("win")
+    let mut i = 0;
+    let r = loop {
+        println!("2");
+        i + 1;
+        if i == 10 { break i; }
     };
 
-    // 实际上,if表达式,那么他也有返回值的
-    // 此时其对应的值并不明确,因为可能条件结果为false
-    // let number = if number > 4 {
-    //     4
-    // };
-
-    // 此if返回值的类型是明确的. 且他们的类型应该是一样的,这样rust才知道其返回值的类型.
-    let number = if number > 4 {
-        4
-    } else {
-        5
+    // 多个loop循环
+    // 可以通过`'loop_token: `来指定循环的标识循环,以供在嵌套循环中区分循环
+    let mut counter = 0;
+    let t = 'other: loop {
+        counter += 1;
+        println!("other");
+        'inner: loop {
+            println!("inner");
+            if counter == 5 {
+                break 'other 2;
+            }
+        }
     };
-    assert_eq!(number, 5);
 }
