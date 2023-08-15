@@ -47,4 +47,18 @@ fn main() {
         s4 = s5;
     }
     println!("{s4}");
+
+    let s6 = String::from("hello world");
+    takes_ownership(s6); // s6 所有者被移入函数
+
+    let i = 5;
+    makes_copy(i); // i32 实现了copy trait, 值并不会发生移动而是拷贝
+}
+
+fn takes_ownership(s: String) {
+    println!("{s}")
+}
+
+fn makes_copy(i: i32) {
+    println!("{i}")
 }
