@@ -53,6 +53,8 @@ fn main() {
 
     let i = 5;
     makes_copy(i); // i32 实现了copy trait, 值并不会发生移动而是拷贝
+
+    // 变量的所有权总是遵循着相同的模式: 将给另一个变量时移动它. 当持有堆中的数据的的变量离开作用域的时候drop掉.
 }
 
 fn takes_ownership(s: String) {
