@@ -22,7 +22,7 @@ fn main() {
     // 为了确保内存安全,在let s2 = s1的时候,rust便s1不再有效且在作用域结束也不会释放.
     let s1 = String::from("hello world");
     let s2 = s1;
-    println!("{s1}");
+    println!("{s2}");
 
     // 移动而非拷贝(浅深)
     // 并非浅拷贝,因为拷贝后前者被提前释放()
@@ -40,4 +40,11 @@ fn main() {
     // copy trait 往往作用在存储在栈中的数据. copy 同样也是往栈新放入数据. .
     // drop trait 往往处理与存储在堆中的数据. 在作用域结束的时候回收内存.
     // 放入栈中的数据在作用域离开后就移出栈而非drop
+
+    let mut s4 = String::from("hello world");
+    {
+        let s5 = s4;
+        s4 = s5;
+    }
+    println!("{s4}");
 }
