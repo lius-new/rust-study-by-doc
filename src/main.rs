@@ -2,6 +2,7 @@
 // 不需要为某个属性mut声明,因为这只是一个类型
 struct User {
     name: String,
+    // name: &String, 结构体不允许将某个字段设置为&,引用,因为实例要拥有其每个属性的的所有权.
     age: i32,
     email: String,
 }
@@ -13,6 +14,14 @@ fn build_user(name: String, email: String) -> User {
         age: 10,
     }
 }
+
+struct Test {
+    arr: [i32; 5],
+}
+
+// 元组结构体
+struct Color(i32, i32, i32);
+
 
 fn main() {
     // 实例
@@ -46,5 +55,10 @@ fn main() {
     // 在使用这样的方式来创建新得实例时候实际上发生了值的移动,存储在堆中的数据会发生移动. 但是访问非堆中的数据依旧可以访问
     // println!("{}", u2.name)
 
-    println!("{}", u2.age)
+    println!("{}", u2.age);
+
+    // 元组和struct有着类似的地方,比如可以存储不同类型的数据,比如都是通过.来访问其中的数据
+
+    let color = Color(1, 2, 3);
+    let c = &color[..];
 }
