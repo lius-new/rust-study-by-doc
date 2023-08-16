@@ -2,9 +2,11 @@
 // 不需要为某个属性mut声明,因为这只是一个类型
 struct User {
     name: String,
+    // 使用String而非是&str,如果结构体往往会拥有它所有字段数据,为此整个结构体有效那么其数据也是有效的.
     // name: &String, 结构体不允许将某个字段设置为&,引用,因为实例要拥有其每个属性的的所有权.
     age: i32,
     email: String,
+    // desc: &'static str, 这样为什么可以, 结构体可以包含其他值的引用,但是要确保其引用的数据是否还存在,此时便要用到声明周期
 }
 
 fn build_user(name: String, email: String) -> User {
