@@ -22,6 +22,14 @@ struct Test {
 // 元组结构体
 struct Color(i32, i32, i32);
 
+// 类单元结构体. 在使用类单元结构体的时候,其没有任何字段.这有些像static的工具类,但是事实上工具类也会有自身的属性
+struct AlwaysEqual;
+
+impl AlwaysEqual {
+    fn test(self: &Self) -> Self {
+        AlwaysEqual {}
+    }
+}
 
 fn main() {
     // 实例
