@@ -1,25 +1,45 @@
+use std::env::set_current_dir;
+
 fn main() {
-    // slice 允许引用一段连续的集合序列,而不是整合整个集合. 只是引用而非所有者自然没有所有权
     let mut s = String::from("hello world");
-    let _r = first_word(&s); // 注意这个函数的返回值是与s不相关的一个值,在使用其获取的长度后两者就已经不相关了.
+    let s1 = &s[0..5];
+    let s2 = &s[0..10];
+    println!("{s1},{s2}");
 
-    s.clear(); // 此时s已经被清空了,但是后续访问长度其依然是原先的长度
+    // 获取String所有值的切片
+    let s3 = &s[..];
+    // 获取从0..4值的切片
+    let s4 = &s[..4];
+    // 获取0..最后一个值的切片
+    let s5 = &s[1..];
 
-    println!("s: [{s}]");
+    let arr = [1, 2, 3, 4, 5];
+    // 获取数组的切片
+    let a1 = &arr[1..2];
+    // 获取元组的切片
+    let tumple = (1, 2, 3, );
+    // 获取从1..到最后的切片.
+    // let tumple1 = &tumple[1..];
 
-    // 使用b''的字面量其类型是u8,
-    // 使用b""的字面量其类型是一个u8类型的数组
-    let b = b' ';
-    let world = b"world";
+    let s6 = second_string(&s);
+    println!("{s6}");
+    s.clear();
+    // 如果后面依然有s6在借用,那么就不可以修改, 不可以修改,修改通常会使用的是可变引用,但是切片确实属于不可变引用,
+    // 注意: &是引用的关系,那么引用就会安发生借用关系.必须要当s6归还后才可以访问到自己本身的变量
+
+    // println!("{s6}");
+
+    let s7 = "hello world";
+
 }
 
-fn first_word(s: &String) -> usize {
+fn second_string(s: &String) -> &str {
     let bytes = s.as_bytes();
-
     for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' { // 因为bytes是u8类型的数组的引用
-            return i;
+        if item == b' ' {
+            return &s[i..];
         }
     }
-    s.len()
+    &s[..]
 }
+
