@@ -21,7 +21,7 @@ fn main() {
     // println!("{:?}", rectangle); // value borrowed here after move
 
     let rectangle2 = Rectangle {
-        width: 30,
+        width: dbg!(10 * 3), // dbg!也可以直接在结构体中使用,这同样也会打印.并且会返回所有权
         height: 50,
     };
     println!("The area of the rectangle is {} square pixels.", area_v5(&rectangle2));
@@ -35,7 +35,7 @@ fn main() {
     // 使用:? 或者:#? 指示符告诉println!宏我们采用Debug的输出方式,Debug是一种trait,允许我们直接打印结构体
     println!("{:?}", rectangle2);
 
-
+    dbg!(&rectangle2); // 使用dbg!宏来打印内容
 }
 
 fn area(width: i32, height: i32) -> i32 {
