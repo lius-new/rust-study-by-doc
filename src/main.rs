@@ -1,3 +1,4 @@
+use std::alloc::handle_alloc_error;
 use std::thread::sleep;
 
 #[derive(Debug)]
@@ -34,6 +35,16 @@ impl Rectangle {
     // 传入多个参数的方法
     fn can_hold(&self, rect: &Self) -> bool {
         self.width > rect.width && self.height > rect.height
+    }
+
+
+    // 所有在impl块中定义的函数被称为关联函数,因为它们与impl后面命名的类型有关
+    // 可以定义不以&Self类型作为参数的函数. 通常将构造器这样写
+    fn new(width: u32, height: u32) -> Self {
+        Self {
+            width,
+            height,
+        }
     }
 }
 
