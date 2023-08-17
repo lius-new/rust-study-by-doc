@@ -6,7 +6,19 @@ enum IpAddrKind {
     V6,
 }
 
+struct IpAddr {
+    kind: IpAddrKind,
+    address: &'static str,
+}
+
+
 fn main() {
-    let v4 = IpAddrKind::V4;
-    println!("{:#?}", v4)
+    let ipaddr1 = IpAddr {
+        kind: IpAddrKind::V4,
+        address: "localhost",
+    };
+    let ipaddr2 = IpAddr {
+        kind: IpAddrKind::V6,
+        address: "::127.0.0.1",
+    };
 }
