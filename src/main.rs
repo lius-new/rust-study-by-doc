@@ -1,8 +1,13 @@
+enum UsState {
+    Alabama,
+    Alaska,
+}
+
 enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter,
+    Quarter(UsState),
 }
 
 
@@ -14,7 +19,10 @@ fn value_in_cents(coin: Coin) -> u8 {
         }
         Coin::Nickel => 2,
         Coin::Dime => 3,
-        Coin::Quarter => 4,
+        Coin::Quarter(usState) => {
+            println!("State quarter from {:?}!", state);
+            4
+        }
     }
 }
 
