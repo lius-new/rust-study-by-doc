@@ -1,26 +1,23 @@
-fn plus_one(x: Option<i32>) -> Option<i32> {
-    match x {
-        Some(x) => Some(x + 1),
-        _ => None
-    }
-}
-
-
 fn main() {
-    let five: Option<i32> = Some(5);
-
-    let five_plus = plus_one(five);
-
-    let res = plus_one(None);
-
-    let dice_roll = 9;
-    match dice_roll {
-        3 => 3,
-        7 => 7,
-        o => o,
+    let config_max = Some(3u8);
+    // 当如果只关心Some时的代码,那么就要写很多 _=>...这样的代码
+    let res = match config_max {
+        Some(max) => {
+            println!("The maximum is configured to be {}", max);
+            Some(max)
+        }
+        _ => None,
     };
-    // 注意使用other来匹配所有特殊列出来的值. 这样就满足了match必须穷尽的值.
-    // 注意匹配的时候分支的顺序,因为match是通过顺寻来匹配的.
 
-    // rust 提供_模式,当我们不想要使用通配模式获取的值时,可以使用_,可以匹配任意值,但是不绑定到该值上.(不绑定表示忽略匹配的值),而后在_对应的代码块中执行操作.
+    // if let 语法等号分割一个模式和表达式.他的工作方式和match是相同的. 这里的表达式对应的是match中的第一个分支
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max);
+    }
+
+    // if let也可以配合else使用,这也就相当于_=>/other=>了
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max);
+    } else {
+        println!("The maximum is not exist");
+    }
 }
