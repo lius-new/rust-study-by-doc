@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug)] // 外部属性, #[]是一种外部属性的使用方式
 struct Rectangle {
     width: i32,
     height: i32,
