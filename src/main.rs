@@ -4,6 +4,12 @@ struct Rectangle {
     height: u32,
 }
 
+#[derive(Debug)]
+struct Rectangle2 {
+    width: u32,
+    height: u32,
+}
+
 // impl Rectangle 块表示是结构体的上下文,表示里面的所有的方法都与结构体相关联
 // 下面在Rectangle 结构体的上下文中定义一个函数,这个函数就是方法,这个方法的定义和普通函数差别在于可以直接使用&self,表示其为结构体实例的方法
 // 注意: 在impl块中, Self表示impl块类型的别名
@@ -15,6 +21,14 @@ impl Rectangle {
         // fn area(&self) -> u32 {
         self.width * self.width
     }
+
+    // 通过传入一个self,也就是将所有者传入进来,然后将其转换为另一种类型
+    fn to_struct(self) -> Rectangle2 {
+        Rectangle2 {
+            width: self.width,
+            height: self.height,
+        }
+    }
 }
 
 fn main() {
@@ -22,5 +36,7 @@ fn main() {
         width: 30,
         height: 50,
     };
-    println!("The area of the rectangle is {} square pixels.", rect1.area())
+    println!("The area of the rectangle is {} square pixels.", rect1.area());
+    let rect2 = rect1.to_struct();
+    println!("{}", rect1.width); // value的值发生了移动,已经无法访问
 }
