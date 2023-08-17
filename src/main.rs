@@ -1,3 +1,7 @@
-// 二进制的根crate
+// 在二进制的根crate中使用mod来创建
+mod garden;
 
-fn main() {}
+fn main() {
+    let asparagus = garden::vegetables::Asparagus {};
+    dbg!(asparagus);
+}
