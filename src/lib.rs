@@ -35,3 +35,9 @@ pub fn eat_at_restaurant() {
     // meal.seasonal_fruit; // 此时无法访问,因为其并不是pub
     front_of_house::hosting::add_to_wait_list(); // 其可以直接访问到front_of_house,因为和其所在函数自傲同一scope
 }
+
+mod customer {
+    pub fn eat_at_restaurant() {
+        front_of_house::hosting::add_to_wait_list(); // 此时无法访问,front_of_house
+    }
+}
