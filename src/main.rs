@@ -49,4 +49,7 @@ fn main() {
     };
     rect2.width = rect1.width; // 结构体之间的赋值并不会导致字段的所有者发生改变
     println!("{}", rect1.width);
+
+    // 在c语言中,指针的操作通常要先获取到 object->something() 或 (*object).something().
+    // 在rust中并没有等效的运算符, 但是rust采用自动引用和解引用, 也就是说访问方法的时候如.p1.distance(&p2)会自动转换为(&p1).distance(&p2);
 }
