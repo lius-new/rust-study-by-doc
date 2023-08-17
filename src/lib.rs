@@ -16,3 +16,13 @@ pub mod front_of_house {
         fn take_payment() {}
     }
 }
+
+// 这里好像就是使用crate::来从根引入.
+// 而二进制crate好像是就使用crate名::来从根引入
+pub fn eat_at_restaurant() {
+    // 绝对路径
+    crate::front_of_house::hosting::add_to_wait_list();
+
+    // 相对路径
+    front_of_house::hosting::add_to_wait_list();
+}
