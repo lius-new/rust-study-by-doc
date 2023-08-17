@@ -5,10 +5,9 @@ pub mod garden;
 fn deliver_order() {}
 
 mod back_of_house {
-    use crate::deliver_order;
     fn fix_incorrect_order() {
         cook_order();
-        deliver_order();
+        super::deliver_order();
     }
 
     fn cook_order() {}
