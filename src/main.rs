@@ -1,3 +1,5 @@
+use std::thread::sleep;
+
 #[derive(Debug)]
 struct Rectangle {
     width: u32,
@@ -16,7 +18,7 @@ struct Rectangle2 {
 impl Rectangle {
     // 当然也可以写成  fn area(self: &Rectangle) -> u32 {
     // 当然也可以写成  fn area(self: &Self) -> u32 {
-    // 注意: &self只是&Self的一个缩写
+    // 注意: &self只是self: &Self的一个缩写
     fn area(&self) -> u32 {
         // fn area(&self) -> u32 {
         self.width * self.width
@@ -28,6 +30,10 @@ impl Rectangle {
             width: self.width,
             height: self.height,
         }
+    }
+    // 传入多个参数的方法
+    fn can_hold(&self, rect: &Self) -> bool {
+        self.width > rect.width && self.height > rect.height
     }
 }
 
