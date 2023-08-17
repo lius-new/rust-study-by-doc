@@ -27,8 +27,11 @@ mod back_of_house {
     fn cook_order() {}
 }
 
+use garden::vegetables::front_of_house;
+
 pub fn eat_at_restaurant() {
     let mut meal = back_of_house::Breakfast::summer("bye");
     meal.toast;
-    meal.seasonal_fruit; // 此时无法访问,因为其并不是pub
+    // meal.seasonal_fruit; // 此时无法访问,因为其并不是pub
+    front_of_house::hosting::add_to_wait_list(); // 其可以直接访问到front_of_house,因为和其所在函数自傲同一scope
 }
