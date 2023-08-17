@@ -1,3 +1,9 @@
+enum Temp {
+    Type1(i32),
+    Type2(u32),
+    Type3(&'static str),
+}
+
 fn main() {
     let config_max = Some(3u8);
     // 当如果只关心Some时的代码,那么就要写很多 _=>...这样的代码
@@ -19,5 +25,14 @@ fn main() {
         println!("The maximum is configured to be {}", max);
     } else {
         println!("The maximum is not exist");
+    }
+    let temp = Temp::Type3;
+
+    if let temp_ = temp {
+        if let temp__ = temp_ { // 嵌套的if let 模式匹配
+            println!("{:?}", temp__);
+        }
+    } else {
+        println!()
     }
 }
