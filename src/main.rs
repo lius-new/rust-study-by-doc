@@ -1,9 +1,10 @@
+struct IpAddV4 {}
+
+struct IpAddV6 {}
+
 enum IpAddr {
-    V4(u8, u8, u8, u8),
-    V6(String),
+    V4(IpAddV4),
+    V6(IpAddV6),
 }
 
-fn main() {
-    let v4 = IpAddr::V4(127, 0, 0, 1);
-    let v6 = IpAddr::V6(String::from("::1"));
-}
+fn main() {}
