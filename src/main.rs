@@ -37,6 +37,16 @@ fn main() {
         height: 50,
     };
     println!("The area of the rectangle is {} square pixels.", rect1.area());
-    let rect2 = rect1.to_struct();
-    println!("{}", rect1.width); // value的值发生了移动,已经无法访问
+    // let rect2 = rect1.to_struct();
+    // println!("{}", rect1.width); // value的值发生了移动,已经无法访问
+
+    let width = rect1.width; // 将值赋值给基本的数据类型好像不会发生值的移动关系
+    println!("{}", rect1.width);
+
+    let mut rect2 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    rect2.width = rect1.width; // 结构体之间的赋值并不会导致字段的所有者发生改变
+    println!("{}", rect1.width);
 }
