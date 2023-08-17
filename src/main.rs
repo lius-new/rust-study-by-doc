@@ -38,7 +38,7 @@ fn main() {
     };
     println!("The area of the rectangle is {} square pixels.", rect1.area());
     // let rect2 = rect1.to_struct();
-    // println!("{}", rect1.width); // value的值发生了移动,已经无法访问
+    // println!("{}", rect1.width); // value的值发生了移动,已经无法访问, 注意这里并不是值发生了移动,而是在rect1.to_struct();过程中将rect1所有者传给了函数self参数,所有者移动了.
 
     let width = rect1.width; // 将值赋值给基本的数据类型好像不会发生值的移动关系
     println!("{}", rect1.width);
