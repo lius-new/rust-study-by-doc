@@ -38,6 +38,9 @@ pub fn eat_at_restaurant() {
 
 mod customer {
     pub fn eat_at_restaurant() {
+        use crate::garden::vegetables::front_of_house;
         front_of_house::hosting::add_to_wait_list(); // 此时无法访问,front_of_house
+
+        super::front_of_house::hosting::add_to_wait_list();
     }
 }
