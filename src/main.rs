@@ -17,8 +17,8 @@ fn main() {
         height: 50,
     };
 
-    println!("The area of the rectangle is {} square pixels.", area_v4(rectangle));
-    println!("{:?}", rectangle); // value borrowed here after move
+    // println!("The area of the rectangle is {} square pixels.", area_v4(rectangle));
+    // println!("{:?}", rectangle); // value borrowed here after move
 
     let rectangle2 = Rectangle {
         width: 30,
@@ -26,6 +26,16 @@ fn main() {
     };
     println!("The area of the rectangle is {} square pixels.", area_v5(&rectangle2));
     println!("{:?}", rectangle); // value borrowed here after move
+
+    // `Rectangle` cannot be formatted with the default formatter
+    // the trait `std::fmt::Display` is not implemented for `Rectangle`
+    // 无法直接打印出来是因为结构体没有实现默认的Display, 默认只是为一些已经固定内存大小的值来创建(基本的存在栈中的数据)
+    println!("{}", rectangle2);
+
+    // 使用:? 或者:#? 指示符告诉println!宏我们采用Debug的输出方式,Debug是一种trait,允许我们直接打印结构体
+    println!("{:?}", rectangle2);
+
+
 }
 
 fn area(width: i32, height: i32) -> i32 {
