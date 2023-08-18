@@ -17,6 +17,16 @@ struct Point<T, Y> {
 }
 
 
+enum Options<T> {
+    Some(T),
+    None,
+}
+
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+
 fn main() {
     // 泛型, 被设计用来处理重复的逻辑的工具
 
