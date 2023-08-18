@@ -14,4 +14,11 @@ fn main() {
     for (key, value) in hash_map.iter() {
         println!("{key}:{value}")
     }
+
+    let field_name = String::from("hello");
+    let field_value = 2;
+
+    // 如果是实现了copy trait类型的数据,那么值可以拷贝进入HashMap,如果是没有实现的,那么所有权就会发生转移, 此时HashMap的变量才是所有者
+    // 注意如果保存的是引用值,那么就要保证引用值的声明周期在HashMap的生命周期范围内是有效的.
+    hash_map.insert(field_name, field_value);
 }
