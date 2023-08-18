@@ -4,5 +4,10 @@ fn main() {
     let mut s = String::new();
     let data = "initial contents";
     let s = data.to_string();
-    let s = "initial contents".to_string();
+    let mut s = "initial contents".to_string();
+
+    // 添加字节
+    s.push('o');
+    // 添加其他字符串
+    s.push_str("hello");
 }
