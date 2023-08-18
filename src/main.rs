@@ -10,6 +10,13 @@ fn lagrest<T: PartialOrd>(list: &[T]) -> &T {
     largest
 }
 
+// 结构体的泛型
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+
 fn main() {
     // 泛型, 被设计用来处理重复的逻辑的工具
 
@@ -18,4 +25,7 @@ fn main() {
 
     let number_list = vec![203, 89, 10, 8392];
     println!("The largest number is {}", lagrest(&number_list));
+
+    let integer = Point { x: 1, y: 2 };
+    let float = Point { x: 1.0, y: 2.0 };
 }
