@@ -9,4 +9,11 @@ fn main() {
 
     // push , 注意vector必须是mut的.不然不允许修改
     v.push(4);
+
+    // get
+    let number2 = &v[2]; // 使用索引的方式获取, 这样获取到的是一个&i32类型,是一个不可变引用
+    let number2_ = v.get(2); // 使用get方式获取.
+    if let number = number2 {
+        println!("{}", number)
+    }
 }
