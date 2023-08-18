@@ -16,6 +16,29 @@ struct Point<T, Y> {
     y: Y,
 }
 
+impl<T, Y> Point<T, Y> {
+    fn x(&self) -> T {
+        &self.x
+    }
+}
+
+impl Point<i32, i32> {
+    fn distance_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
+// 结构体定义的泛型类型参数并不总是与结构体方法签名中使用的泛型类型是同一类型
+// 注意X,Y泛型与结构体对应
+// X2,Y2泛型与函数签名对应
+impl<X, Y> Point<X, Y> {
+    fn mixup<X2, Y2>(self, other: Point<X2, Y2>) -> Point<X, Y2> {
+        Point {
+            x: self.x,
+            y: other.y,
+        }
+    }
+}
 
 enum Options<T> {
     Some(T),
