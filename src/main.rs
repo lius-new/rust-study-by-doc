@@ -21,4 +21,23 @@ fn main() {
     // 如果是实现了copy trait类型的数据,那么值可以拷贝进入HashMap,如果是没有实现的,那么所有权就会发生转移, 此时HashMap的变量才是所有者
     // 注意如果保存的是引用值,那么就要保证引用值的声明周期在HashMap的生命周期范围内是有效的.
     hash_map.insert(field_name, field_value);
+
+
+    // 插入一个值
+
+    // 直接插入,不考虑覆盖的情况
+    hash_map.insert("hello".to_string(), 0);
+
+    // 考虑覆盖的情况
+    // entry会检查对应的key是否存在,如果没有才插入值
+    // 如果存在就返回这个值的可变引用
+    let r = hash_map.entry("hello".to_string()).or_insert(0);
+
+    let text = "hello world wonderful world";
+    let mut hash_map_count = HashMap::new();
+    for x in text.split_whitespace() {
+        let count = hash_map_count.entry(x).or_insert(0);
+        *count += 1
+    }
+    println!("{:#?}", hash_map_count)
 }
