@@ -1,4 +1,5 @@
-fn lagrest<T>(list: &[T]) -> &T {
+// 限制T的类型只对实现了 PartialOrd类型有效
+fn lagrest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0];
 
     for number in list.iter() {
