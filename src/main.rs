@@ -1,4 +1,4 @@
-fn lagrest(list: &[i32]) -> &i32 {
+fn lagrest<T>(list: &[T]) -> &T {
     let mut largest = &list[0];
 
     for number in list.iter() {
