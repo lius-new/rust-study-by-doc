@@ -16,4 +16,7 @@ fn main() {
     if let number = number2 {
         println!("{}", number)
     }
+
+    v.push(5); // 注意: number2 是不可变引用,而push会获取可变引用,这是不被所有权所允许的. 可变和不可变引用不可同时存在. 比如当vsc容量增加时,原先索引位置的值就可能发生变化.
+    println!("{}", number2);
 }
