@@ -10,10 +10,10 @@ fn lagrest<T: PartialOrd>(list: &[T]) -> &T {
     largest
 }
 
-// 结构体的泛型
-struct Point<T> {
+// 结构体的泛型,注意此时结构体中字段的类型为泛型T,这样也就意味x,y字段的类型都是一样的。 可以通过设置两个泛型类型
+struct Point<T, Y> {
     x: T,
-    y: T,
+    y: Y,
 }
 
 
