@@ -61,4 +61,7 @@ fn main() {
 
     let integer = Point { x: 1, y: 2 };
     let float = Point { x: 1.0, y: 2.0 };
+
+    // 注意：泛型并不会有运行时开销。 这解释的是并不会在运行时去决定类型，这在编译的时候就已经创建了各个使用类型的定义了。比如Some(5)那么就会在编译的视乎编译为Option<i32>如果是Some('c'),那么就编译为Option<char>。
+
 }
