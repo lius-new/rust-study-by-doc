@@ -1,4 +1,5 @@
 use std::fmt::{Display, Formatter};
+use std::iter::Sum;
 
 pub trait Summary {
     fn summarize(&self) -> String {
@@ -50,6 +51,16 @@ pub fn notify_v2<T: Summary>(item: &T) {
 // 如果有多个泛型的参数呢?
 pub fn notify_v3<T: Summary>(param1: &T, param2: &T) {
     println!("breaking news:{} / {}", param1.summarize(), param2.summarize())
+}
+
+// 如果一个函数以实现了两种trait类型(Summary,Display)的类型作为参数
+pub fn notify_v4(param1: &impl Summary + Display) {
+    println!("breaking news:{}  ", param1.summarize())
+}
+
+// 同样适应bound这样的写法
+pub fn notify_v5<T: Summary + Display>(param1: &T) {
+    println!("breaking news:{}  ", param1.summarize())
 }
 
 fn main() {
