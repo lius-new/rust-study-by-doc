@@ -2,8 +2,9 @@ use std::fmt::{Display, Formatter};
 
 pub trait Summary {
     fn summarize(&self) -> String {
-        String::from("hello world")
+        format!("(Read more from {}...)", self.summarize_author())
     }
+    fn summarize_author(&self) -> String;
 }
 
 pub struct NewsArticle {
@@ -14,7 +15,7 @@ pub struct NewsArticle {
 }
 
 impl Summary for NewsArticle {
-    fn summarize(&self) -> String {
+    fn summarize_author(&self) -> String {
         todo!()
     }
 }
@@ -26,14 +27,13 @@ impl Display for NewsArticle {
 }
 
 impl Summary for dyn Display {
-    fn summarize(&self) -> String {
+    fn summarize_author(&self) -> String {
         todo!()
     }
 }
 
-
 impl Summary for Vec<T> {
-    fn summarize(&self) -> String {
+    fn summarize_author(&self) -> String {
         todo!()
     }
 }
