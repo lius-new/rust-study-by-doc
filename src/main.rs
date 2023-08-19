@@ -16,12 +16,12 @@ pub struct NewsArticle {
 
 impl Summary for NewsArticle {
     fn summarize_author(&self) -> String {
-        todo!()
+        todo!("hell")
     }
 }
 
 impl Display for NewsArticle {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, _f: &mut Formatter<'_>) -> std::fmt::Result {
         todo!()
     }
 }
@@ -32,13 +32,24 @@ impl Summary for dyn Display {
     }
 }
 
-impl Summary for Vec<T> {
+impl<T> Summary for Vec<T> {
     fn summarize_author(&self) -> String {
         todo!()
     }
 }
 
+pub fn notify(item: &impl Summary) {
+    println!("breaking news:{}", item.summarize())
+}
+
 fn main() {
     // trait
     // 类型的行为是由类型的方法决定的。如果不同的类型调用相同的方法，那么这些类型就可以共享相同的方法了。
+    let news = NewsArticle {
+        author: String::from("hello world"),
+        location: String::from("hello world"),
+        content: String::from("hello world"),
+        headline: String::from("hello world"),
+    };
+    notify(&news);
 }
