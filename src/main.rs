@@ -1,5 +1,6 @@
 use std::fmt::{Debug, Display, Formatter};
 use std::iter::Sum;
+use std::os::unix::raw::time_t;
 
 pub trait Summary {
     fn summarize(&self) -> String {
@@ -80,6 +81,17 @@ pub fn some_function_v2<T, U>(t: &T, u: &U)
         U: Clone + Debug
 {
     todo!()
+}
+
+// 函数返回trait类型的参数
+fn returns_summarizable() -> impl Summary {
+    let news = NewsArticle {
+        author: String::from("hello world"),
+        location: String::from("hello world"),
+        content: String::from("hello world"),
+        headline: String::from("hello world"),
+    };
+    news
 }
 
 fn main() {
