@@ -73,6 +73,15 @@ pub fn some_function_v1<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) {
     todo!()
 }
 
+// 通过将泛型bound的写法写道后面。用来简化函数签名
+pub fn some_function_v2<T, U>(t: &T, u: &U)
+    where
+        T: Display + Clone,
+        U: Clone + Debug
+{
+    todo!()
+}
+
 fn main() {
     // trait
     // 类型的行为是由类型的方法决定的。如果不同的类型调用相同的方法，那么这些类型就可以共享相同的方法了。
