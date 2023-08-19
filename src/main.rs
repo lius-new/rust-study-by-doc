@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter};
+use std::fmt::{Debug, Display, Formatter};
 use std::iter::Sum;
 
 pub trait Summary {
@@ -61,6 +61,16 @@ pub fn notify_v4(param1: &impl Summary + Display) {
 // 同样适应bound这样的写法
 pub fn notify_v5<T: Summary + Display>(param1: &T) {
     println!("breaking news:{}  ", param1.summarize())
+}
+
+// 函数的参数是实现了两种trait的参数类型
+pub fn some_function(t: &impl Display + Clone, u: &impl Clone + Debug) {
+    todo!()
+}
+
+// 使用bound边界的写法(感觉看起来还是很啰嗦，但是感觉很明了)
+pub fn some_function_v1<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) {
+    todo!()
 }
 
 fn main() {
